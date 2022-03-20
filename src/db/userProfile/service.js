@@ -1,11 +1,10 @@
-import { getUserInDBIg, userIf } from '../../interface/userSignUpIf';
 /**
  * UserProfileService will be exported and will be used by dev to fetch/update/create data in db
  */
 class UserProfileService {
-  public UserProfile: any;
+  
 
-  constructor(UserProfile: any) {
+  constructor(UserProfile) {
     this.UserProfile = UserProfile;
   }
 
@@ -14,7 +13,7 @@ class UserProfileService {
    * @param {object} info
    * @returns created user
    */
-  async addUser(info: any, opts: any) {
+  async addUser(info, opts) {
     this.UserProfile.requiredFields(info);
     return this.UserProfile.add(info, opts);
   }
@@ -24,8 +23,8 @@ class UserProfileService {
    * @param {object} info
    * @returns created user
    */
-  async bulkAdd(info: any, opts: any) {
-    await Promise.all(info.map((e: any) => this.UserProfile.requiredFields(e)));
+  async bulkAdd(info, opts) {
+    await Promise.all(info.map((e) => this.UserProfile.requiredFields(e)));
     return this.UserProfile.bulkAdd(info, opts);
   }
 
@@ -35,18 +34,18 @@ class UserProfileService {
    * @param {object} info
    * @returns
    */
-  async updateUser(playerId: getUserInDBIg, info: userIf, opts: any) {
+  async updateUser(playerId, info, opts) {
     return this.UserProfile.updateByCond(playerId, info, opts);
   }
 
-  async getUser(where: getUserInDBIg) {
+  async getUser(where) {
     try {
       return this.UserProfile.getOne(where);
     } catch (error) {
-      // logger.error(error);
+      
       throw new Error(error);
     }
   }
 }
 
-export = UserProfileService;
+module.exports = UserProfileService;

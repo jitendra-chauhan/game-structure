@@ -1,4 +1,4 @@
-import UserProfileService from './userProfile/service';
+const UserProfileService = require('./userProfile/service');
 
 class DB {
 
