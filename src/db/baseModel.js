@@ -36,7 +36,7 @@ class BaseModel {
    *
    * @param {object} info
    * @param {Array} fields
-   * @returns throw error if required fields are not in object
+   * @returns throw an error if required fields are not in the object
    */
   // eslint-disable-next-line class-methods-use-this
   checkRequiredFields(info, fields) {
